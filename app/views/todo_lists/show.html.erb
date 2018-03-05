@@ -1,0 +1,39 @@
+<h5 class="text-center bold pb-3">Ranking de los primeros 5 Usuarios que ya lo han completado</h5>
+
+<div class="row">
+	<% @usuarios.each do |datos| %>
+	<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+		<div class="card border-success white bottom-space sombra text-center mb-4 ">
+			
+			<header>			
+				<h3 class="grey-text bold text-center card-header"><%= image_tag  datos.picture if datos.picture? %> </h3>
+			</header>
+			
+			<div class="p-3 text-center">  <!-- padding de bootstrap -->
+				<section>
+					<div class="col-lg-10 col-md-12 col-sm-12 col-12 inline-block no-padding text-center">
+						<strong><%= datos.email %> </strong>
+					</div>
+					
+				</section>
+			</div>
+		</div>
+	</div>
+	
+	<% end %>
+</div>
+
+<hr>
+
+<div class="text-center">
+	<h3>Resto de Usuarios</h3>
+	<% if !@restante.nil? %>
+	<% @restante.each do |variable| %>
+	<li><%= variable.email %></li>
+	<% end %>
+	<% end %>
+</div>
+
+<div>
+	<%= link_to 'Volver <i class="oi oi-arrow-circle-left"></i>'.html_safe, root_path, class:'btn btn-primary' %>
+</div>

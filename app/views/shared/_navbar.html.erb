@@ -1,21 +1,23 @@
 <nav class="fixed-top navbar navbar-expand-lg navbar-light white-text green sombra">
-	<a class="navbar-brand" href= <%= root_path %> >Mi App</a>
+	<a class="navbar-brand" href= <%= root_path %> >Home</a>
+
+	<% if user_signed_in? %>
+	<a class="navbar-brand" href= <%= todo_lists_path %> >Mis Tareas Realizadas</a>
+	<% end %>
+
+
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 	
-	
-	
 	<div class="collapse navbar-collapse" id="navbarNav">
-		<ul class="navbar-nav mr-auto">
-			<li class="nav-item">
-				<a class="nav-link bold" href= <%#= matches_path %> >Ver Match</a>
-			</li>
-		</ul>
-		
-		
 		<ul class="navbar-nav ml-auto">
 			<% if user_signed_in? %>
+			
+			<li class="navbar-brand">
+				(<%= @quantity_todos.nil? ? "Completados 0/#{@quantity_total}" : "Completados #{@quantity_todos}/#{@quantity_total}"  %>)
+			</li>
+			
 			<li class="nav-item">
 				<%= link_to current_user.email, '#', class: 'nav-link' %>
 			</li>

@@ -1,8 +1,8 @@
-<h1 class="text-center bold green-text">Listado de Tareas</h1>
+<h1 class="text-center bold green-text">Listado de Tareas Relizadas por mi</h1>
 
 
 <div class="row">
-	<% @todo.each do |todos| %>
+	<% @realizados.each do |todos| %>
 	<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
 		<div class="card border-success white bottom-space sombra text-center mb-4 ">
 			
@@ -27,18 +27,8 @@
 					
 					<div class="text-center">
 						
-						<% if user_signed_in?%>
-							<% if current_user.todo_lists.find_by(todo_id: todos.id).nil? %>
-								<%= link_to 'Listo <i class="oi oi-check"></i>'.html_safe, todo_todo_lists_path(todos.id, bandera:'listo'), class:'btn btn-primary', method: :post %>
-							<% else %>
-								<%= link_to 'No Listo <i class="oi oi-x"></i>'.html_safe, todo_todo_lists_path(todos.id, bandera:'no listo'), class:'btn btn-danger', method: :post %>
-							<% end %>
-							
-							<%= link_to 'Detalle <i class="oi oi-zoom-in"></i>'.html_safe, todo_list_path(todos.id), class:'btn btn-info' %>
 						
-						<% else %>
-							<%= link_to 'Listo <i class="oi oi-check"></i>'.html_safe, todo_todo_lists_path(todos.id), class:'btn btn-primary', method: :post %>
-						<% end %>
+            <%= link_to 'Volver <i class="oi oi-circle-left"></i>'.html_safe, root_path, class:'btn btn-primary' %>
 						
 					</div>
 					
