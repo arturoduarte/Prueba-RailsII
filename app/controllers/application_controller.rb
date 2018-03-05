@@ -4,9 +4,11 @@ class ApplicationController < ActionController::Base
   before_action :cantidad_carrito
 
 	def cantidad_carrito
-		#@quantity_order para el navbar
+    #@quantity_order para el navbar
+    if user_signed_in?
     @quantity_todos = current_user.todo_lists.count
     @quantity_total = Todo.all.count
+    end
 	end
 
   private
